@@ -4,20 +4,30 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                script {
+                    // Scripted block inside Declarative
+                    if (env.BRANCH_NAME == 'main') {
+                        echo "Running production build..."
+                    } else {
+                        echo "Running dev build..."
+                    }
+                }
             }
         }
         stage('Test') {
             steps {
-                echo 'Testing..'
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Deploying....'
+                echo "Running tests..."
             }
         }
     }
-}
 
-    
+    post {
+        success {
+            echo "✅ Build succeeded!"
+        }
+        failure {
+            echo "❌ Build failed!"
+        }
+    }
+}
+// This Jenkinsfile demonstrates a Declarative Pipeline with a scripted block
