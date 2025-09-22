@@ -9,7 +9,12 @@ pipeline {
                 timeout(time: 1, unit: 'SECONDS')
             }
             steps {
+                sh '''
                 echo 'Hello World'
+                sh mkdir  jp
+                sh pwd 
+
+                '''
             }
         }
     }
