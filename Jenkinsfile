@@ -10,7 +10,7 @@ pipeline {
             }
             steps {
                 sh '''
-                sh 'echo "Hello World'
+                sh 'echo 'Hello World'
                 sh 'mkdir -p jp'
                 sh 'echo "Hello World" > jp/hello.txt'
                 sh 'cat jp/hello.txt'
