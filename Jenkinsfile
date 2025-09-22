@@ -5,16 +5,14 @@ pipeline {
         stage('Example') {
             agent any
             options {
-                // Timeout counter starts BEFORE agent is allocated
                 timeout(time: 1, unit: 'SECONDS')
             }
             steps {
                 sh '''
-                sh 'echo 'Hello World'
-                sh 'mkdir -p jp'
-                sh 'echo "Hello World" > jp/hello.txt'
-                sh 'cat jp/hello.txt'
-
+                  echo "Hello World"
+                  mkdir -p jp
+                  echo "Hello World" > jp/hello.txt
+                  cat jp/hello.txt
                 '''
             }
         }
@@ -24,6 +22,4 @@ pipeline {
             echo 'I will always say Hello again!'
         }
     }
-
-
 }
