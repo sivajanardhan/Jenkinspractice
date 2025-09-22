@@ -1,33 +1,17 @@
 pipeline {
-    agent any
+    agent { label 'agent-1' }
+
 
     stages {
-        stage('Build') {
-            steps {
-                script {
-                    // Scripted block inside Declarative
-                    if (env.BRANCH_NAME == 'main') {
-                        echo "Running production build..."
-                    } else {
-                        echo "Running dev build..."
-                    }
-                }
+        stage('Example') {
+            agent any
+            options {
+                // Timeout counter starts BEFORE agent is allocated
+                timeout(time: 1, unit: 'SECONDS')
             }
-        }
-        stage('Test') {
             steps {
-                echo "Running tests..."
+                echo 'Hello World'
             }
-        }
-    }
-
-    post {
-        success {
-            echo "✅ Build succeeded!"
-        }
-        failure {
-            echo "❌ Build failed!"
         }
     }
 }
-// This Jenkinsfile demonstrates a Declarative Pipeline with a scripted block
