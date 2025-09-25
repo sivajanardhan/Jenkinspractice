@@ -1,25 +1,17 @@
 pipeline {
     agent { node { label 'agent-1' } } 
-    
-    stages {
-        stage('Example') {
-            agent any
-            options {
+     options {
                 timeout(time: 1, unit: 'SECONDS')
             }
+    environment { 
+        USER = 'sivaJanrdhan'
+       }
+    stages {
+        stage('Example') {
+            
+           
 
-         
-        stage('my-credentials') {
-            environment { 
-                AN_ACCESS_KEY = credentials('my-predefined-secret-text') 
-            }
-            steps {
-                sh 'printenv'
-            }
-        }
-    }
-   
-
+        
 
             steps {
                 sh '''
@@ -46,4 +38,4 @@ pipeline {
     }
 
 
-
+}
