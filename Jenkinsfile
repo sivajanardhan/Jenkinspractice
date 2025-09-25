@@ -78,7 +78,7 @@ pipeline {
 
         stage('PROD Deploy') {
             when {
-                environment name: 'USER', value: 'sivakumar'
+                environment name: 'USER', value: 'admin'
             }
             steps {
                 echo "deploying to PROD"
