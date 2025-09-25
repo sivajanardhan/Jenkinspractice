@@ -8,6 +8,18 @@ pipeline {
                 timeout(time: 1, unit: 'SECONDS')
             }
 
+         stages {
+        stage('my-credentials') {
+            environment { 
+                AN_ACCESS_KEY = credentials('my-predefined-secret-text') 
+            }
+            steps {
+                sh 'printenv'
+            }
+        }
+    }
+   
+
 
             steps {
                 sh '''
