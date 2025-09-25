@@ -7,6 +7,11 @@ pipeline {
             options {
                 timeout(time: 1, unit: 'SECONDS')
             }
+
+        environment { 
+        USER = 'sivajanardhan'
+       }
+
             steps {
                 sh '''
                   echo "Hello World"
